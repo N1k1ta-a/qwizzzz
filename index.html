@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для тебя 💌</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #ffe0ec 0%, #ffd6e0 40%, #e8d5ff 100%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Плавающие сердечки на фоне */
+  .heart-bg {
+    position: fixed;
+    bottom: -40px;
+    font-size: 22px;
+    animation: floatUp linear infinite;
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes floatUp {
+    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    padding: 44px 34px;
+    max-width: 520px;
+    width: 92%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(255, 120, 160, 0.35);
+    border: 1px solid rgba(255,255,255,0.7);
+    animation: popIn 0.6s cubic-bezier(.2,.9,.3,1.2);
+  }
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .emoji-big { font-size: 64px; margin-bottom: 14px; display: block; animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.12)} }
+
+  h1 {
+    font-size: 26px;
+    color: #d6336c;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+  p.sub {
+    color: #7a5c6b;
+    font-size: 16px;
+    margin-bottom: 28px;
+    line-height: 1.55;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 60px;
+  }
+
+  button {
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 34px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  #yesBtn {
+    background: linear-gradient(135deg, #ff6b9d, #d6336c);
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(214, 51, 108, 0.4);
+  }
+  #yesBtn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 28px rgba(214,51,108,0.55); }
+  #noBtn {
+    background: #f1e4ea;
+    color: #9b7688;
+    position: relative;
+    transition: transform 0.12s ease-out;
+  }
+
+  /* Финальный экран */
+  #finalScreen {
+    display: none;
+    animation: fadeIn 1s ease;
+  }
+  @keyframes fadeIn { from{opacity:0; transform: translateY(18px);} to{opacity:1; transform:none;} }
+
+  #finalScreen h1 { font-size: 30px; margin-bottom: 18px; }
+  .love-text {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #5b4450;
+    text-align: left;
+    margin-bottom: 22px;
+  }
+  .love-text p { margin-bottom: 14px; }
+  .love-text .highlight {
+    color: #d6336c;
+    font-weight: 700;
+  }
+  .signature {
+    font-size: 18px;
+    font-style: italic;
+    color: #d6336c;
+    text-align: right;
+    margin-top: 10px;
+  }
+  .hearts-row { font-size: 26px; letter-spacing: 6px; margin-top: 18px; animation: pulse 1.4s infinite; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <!-- Вопрос -->
+  <div id="questionScreen">
+    <span class="emoji-big">🥺</span>
+    <h1>Ты меня любишь?..</h1>
+    <p class="sub">Только честно, без «буки» и холода 😊</p>
+    <div class="buttons">
+      <button id="yesBtn">Да, конечно 💕</button>
+      <button id="noBtn">Нет</button>
+    </div>
+  </div>
+
+  <!-- Финальный экран -->
+  <div id="finalScreen">
+    <span class="emoji-big">❤️</span>
+    <h1>Я так и знал, что ты у меня самая лучшая</h1>
+    <div class="love-text">
+      <p>Прости меня, пожалуйста. Если я чем-то тебя задел или ты закрылась из-за меня, мне правда очень жаль. Я не хочу, чтобы ты была холодной и букой, я хочу видеть твою улыбку, слышать твой смех и просто быть рядом.</p>
+      <p>Я <span class="highlight">безумно скучаю по тебе</span>. По твоим сообщениям, по твоему голосу, по тому, как ты морщишь нос, когда смеёшься.</p>
+      <p>И я <span class="highlight">очень сильно тебя люблю</span> — больше, чем могу сказать словами. Ты самое тёплое, что у меня есть. Пожалуйста, улыбнись. Хотя бы чуть-чуть. Ради меня 💗</p>
+      <p class="signature">Твой, весь твой... навсегда</p>
+    </div>
+    <div class="hearts-row">💖 💗 💞 💘 💝</div>
+  </div>
+</div>
+
+<script>
+  /* --- Фоновые сердечки --- */
+  const heartEmojis = ['💖','💗','💕','💞','💘','🩷','❤️'];
+  function spawnHeart() {
+    const h = document.createElement('div');
+    h.className = 'heart-bg';
+    h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (14 + Math.random() * 22) + 'px';
+    const dur = 7 + Math.random() * 8;
+    h.style.animationDuration = dur + 's';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), dur * 1000);
+  }
+  setInterval(spawnHeart, 450);
+  for (let i = 0; i < 8; i++) setTimeout(spawnHeart, i * 200);
+
+  /* --- Убегающая кнопка "Нет" --- */
+  const noBtn = document.getElementById('noBtn');
+  const messages = [
+    'Нет', 'Точно нет?', 'Подумай ещё', 'Не может быть', 'Ты уверена?',
+    'А если подумать?', 'Ну пожалуйста', 'Я же скучаю', 'Не убегай 🥺', 'Нет (но да)'
+  ];
+  let msgIndex = 0;
+  let scale = 1;
+
+  function flee() {
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    // Переводим кнопку в fixed-позицию, чтобы она могла улетать куда угодно
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+    noBtn.style.transform = 'scale(1)';
+
+    msgIndex = Math.min(msgIndex + 1, messages.length - 1);
+    noBtn.textContent = messages[msgIndex];
+
+    // Кнопка "Да" становится чуть больше — притягивает взгляд
+    const yesBtn = document.getElementById('yesBtn');
+    scale = Math.min(scale + 0.07, 1.5);
+    yesBtn.style.transform = `scale(${scale})`;
+  }
+
+  // Уворачивается и от курсора, и от касания
+  noBtn.addEventListener('mouseenter', flee);
+  noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); flee(); }, { passive: false });
+  noBtn.addEventListener('click', (e) => { e.preventDefault(); flee(); });
+
+  /* --- Кнопка "Да" --- */
+  document.getElementById('yesBtn').addEventListener('click', () => {
+    document.getElementById('questionScreen').style.display = 'none';
+    document.getElementById('finalScreen').style.display = 'block';
+    noBtn.style.display = 'none';
+
+    // Салют из сердечек
+    for (let i = 0; i < 30; i++) setTimeout(spawnHeart, i * 80);
+  });
+</script>
+</body>
+</html>
